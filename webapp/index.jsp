@@ -1079,6 +1079,7 @@
                                     <li id="menu-item-9878" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9878"><a href="https://auca.ac.rw/about/location/">Location</a></li>
                                 </ul>
                             </li>
+
                             <li id="menu-item-9823" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-9823"><a href="https://auca.ac.rw/admissions/">Admissions</a>
                                 <ul class="sub-menu">
                                     <li id="menu-item-9840" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9840"><a href="https://auca.ac.rw/undergraduate-admission-requirements/">Undergraduate Admission Requirements</a></li>
@@ -1088,6 +1089,8 @@
                                     <li id="menu-item-9860" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9860"><a href="https://auca.ac.rw/fees-structure/">Fee Structure</a></li>
                                 </ul>
                             </li>
+                          
+                            <% if (existingUser != null && ("Student".equals(existingUser.getRole()) || "Admin".equals(existingUser.getRole()))) { %>
                             <li id="menu-item-9816" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-9816"><a href="https://auca.ac.rw/academics/">Academics</a>
                                 <ul class="sub-menu">
                                     <li id="menu-item-9815" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9815"><a href="https://auca.ac.rw/academic-calendar-2022-2023/">Academic Calendar 2023 – 2024</a></li>
@@ -1140,7 +1143,8 @@
                                     </li>
                                 </ul>
                             </li>
-                        <% if (existingUser != null && ("teacher".equals(existingUser.getRole()) || "admin".equals(existingUser.getRole()))) { %>
+                            <% } %>
+<% if (existingUser != null && ("Teacher".equals(existingUser.getRole()) || "Admin".equals(existingUser.getRole()))) { %>
     <li id="menu-item-9836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-9836">
         <a href="https://auca.ac.rw/media-center/">Media Center</a>
         <ul class="sub-menu">
@@ -1181,7 +1185,8 @@
             </li>
         </ul>
     </li>
-<% } %>
+    <% } %>
+							<% if (existingUser != null && ("Teacher".equals(existingUser.getRole()) || "Admin".equals(existingUser.getRole()))) { %>
                             <li id="menu-item-9837" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-9837"><a href="https://auca.ac.rw/research/">Research</a>
                                 <ul class="sub-menu">
                                     <li id="menu-item-9829" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9829"><a href="https://auca.ac.rw/auca-journal/">AUCA Journal</a></li>
@@ -1206,6 +1211,7 @@
                                     </li>
                                 </ul>
                             </li>
+                            <% } %>
                             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9826"><a href="Student.jsp">Student</a></li>
                         
                         </ul>
@@ -1236,6 +1242,7 @@
                                     <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9860"><a href="https://auca.ac.rw/fees-structure/">Fee Structure</a></li>
                                 </ul>
                             </li>
+                            <% if (existingUser != null && ("Student".equals(existingUser.getRole()) || "Admin".equals(existingUser.getRole()))) { %>
                             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-9816"><a href="https://auca.ac.rw/academics/">Academics</a>
                                 <ul class="sub-menu">
                                     <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9815"><a href="https://auca.ac.rw/academic-calendar-2022-2023/">Academic Calendar 2023 – 2024</a></li>
@@ -1288,6 +1295,8 @@
                                     </li>
                                 </ul>
                             </li>
+                            <% } %>
+                            <% if (existingUser != null && ("Teacher".equals(existingUser.getRole()) || "Admin".equals(existingUser.getRole()))) { %>
                             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-9836"><a href="https://auca.ac.rw/media-center/">Media Center</a>
                                 <ul class="sub-menu">
                                     <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9847"><a href="https://auca.ac.rw/service-charter/">Service Charter</a></li>
@@ -1306,6 +1315,8 @@
                                     <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9811"><a href="https://auca.ac.rw/auca-29th-graduation/">29th Graduation</a></li>
                                 </ul>
                             </li>
+                            <% } %>
+                             <% if (existingUser != null && ("Teacher".equals(existingUser.getRole()) || "Admin".equals(existingUser.getRole()))) { %>
                             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-9837"><a href="https://auca.ac.rw/research/">Research</a>
                                 <ul class="sub-menu">
                                     <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9829"><a href="https://auca.ac.rw/auca-journal/">AUCA Journal</a></li>
@@ -1328,10 +1339,19 @@
                                             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9824"><a href="https://auca.ac.rw/news/">Announcements</a></li>
                                         </ul>
                                     </li>
+                       
                                 </ul>
                             </li>
+                            <% } %>
+                            <% if (existingUser != null && ("Student".equals(existingUser.getRole()) || "Admin".equals(existingUser.getRole()))) { %>
                             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9826"><a href="https://auca.ac.rw/apply/">Apply</a></li>
+                            
+                            <% } %>
+                            
+                            <% if (existingUser != null && ("Admin".equals(existingUser.getRole()))) { %>
                             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9826"><a href="hub.jsp">EduHub</a></li>
+                            <% } %>
+                        
                         </ul>
                     </div>
                 </div>
