@@ -1,14 +1,14 @@
 package Model;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Table(name="Semester")
 public class Semester {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "sem_id")
     private int sem_id;
 
@@ -16,10 +16,10 @@ public class Semester {
     private String semesterName;
 
     @Column(name="starting_date")
-    private Timestamp startingDate;
+    private LocalDate startingDate;
 
     @Column(name="end_date")
-    private Timestamp endDate;
+    private LocalDate endDate;
 
     @OneToMany(mappedBy = "semester")
     private List<Course> courses;
@@ -28,7 +28,7 @@ public class Semester {
     public Semester() {
     }
 
-    public Semester(String semesterName, Timestamp startingDate, Timestamp endDate, List<Course> courses) {
+    public Semester(String semesterName, LocalDate startingDate, LocalDate endDate, List<Course> courses) {
         this.semesterName = semesterName;
         this.startingDate = startingDate;
         this.endDate = endDate;
@@ -52,19 +52,19 @@ public class Semester {
         this.semesterName = semesterName;
     }
 
-    public Timestamp getStartingDate() {
+    public LocalDate getStartingDate() {
         return startingDate;
     }
 
-    public void setStartingDate(Timestamp startingDate) {
+    public void setStartingDate(LocalDate startingDate) {
         this.startingDate = startingDate;
     }
 
-    public Timestamp getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Timestamp endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
