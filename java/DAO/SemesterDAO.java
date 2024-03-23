@@ -1,5 +1,8 @@
 package DAO;
 
+import java.util.List;
+
+import org.hibernate.query.Query;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -50,5 +53,16 @@ public class SemesterDAO {
             // Handle exception
         }
         return semester;
+    }
+    public List<Semester> getAllSemesters() {
+        List<Semester> semesters = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query<Semester> query = session.createQuery("FROM Semester", Semester.class);
+            semesters = query.list();
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+            // Handle exception
+        }
+        return semesters;
     }
 }
