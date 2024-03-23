@@ -7,164 +7,169 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
-            color: #333;
         }
 
         .container {
-            width: 80%;
+            max-width: 600px;
             margin: 20px auto;
-            background-color: #fff;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
+        h2 {
+            margin-top: 0;
         }
 
-        form {
-            margin-bottom: 20px;
-        }
-
-        label, input, button {
-            display: block;
-            margin-bottom: 10px;
+        label {
+            font-weight: bold;
         }
 
         input[type="text"],
-        input[type="date"] {
-            width: calc(100% - 20px);
+        input[type="date"],
+        input[type="number"] {
+            width: calc(100% - 22px);
             padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 4px;
         }
 
-        button {
-            cursor: pointer;
-            background-color: #007bff;
-            color: #fff;
+        input[type="submit"] {
+            background-color: #007bff; /* Blue color */
+            color: white;
+            padding: 10px 20px;
             border: none;
-            border-radius: 5px;
-            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
-        button:hover {
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+
+        /* Better-looking button design */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            border: 2px solid #007bff;
+            cursor: pointer;
+        }
+
+        .btn:hover {
             background-color: #0056b3;
+            border-color: #0056b3;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
         }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
         }
 
-        th {
-            background-color: #f2f2f2;
+        /* Message display */
+        #successMessage,
+        #errorMessage {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        #successMessage {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        #errorMessage {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>Student Management</h1>
-        <form id="studentForm"  action="/student" method="post">
 
-        <input type="hidden" name="studentId" id="studentId">
+<div class="container">
+    <h2>Student Management</h2>
+
+    <!-- Form for registering a new student -->
+    <h2>Register Student</h2>
+    <form action="student?action=create" method="post">
         <label for="firstName">First Name:</label>
-        <input type="text" name="firstName" id="firstName" required>
+        <input type="text" id="firstName" name="firstName" required><br>
         <label for="lastName">Last Name:</label>
-        <input type="text" name="lastName" id="lastName" required>
+        <input type="text" id="lastName" name="lastName" required><br>
         <label for="dateOfBirth">Date of Birth:</label>
-        <input type="date" name="dateOfBirth" id="dateOfBirth" required>
-        <button type="submit" id="saveBtn">Save</button>
-        <button type="button" id="updateBtn" style="display: none;">Update</button>
-        <button type="button" id="deleteBtn" style="display: none;">Delete</button>
+        <input type="date" id="dateOfBirth" name="dateOfBirth" required><br>
+        <input type="submit" value="Create Student">
     </form>
-    <table id="studentTable">
-        <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Date of Birth</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!-- Student data will be inserted here dynamically -->
-        </tbody>
-    </table>
+
+    <!-- Form for updating a student -->
+    <h2>Update Student</h2>
+    <form action="student?action=update" method="post">
+        <label for="updateStudentId">Student ID:</label>
+        <input type="number" id="updateStudentId" name="studentId" required><br>
+        <label for="updateFirstName">First Name:</label>
+        <input type="text" id="updateFirstName" name="firstName" required><br>
+        <label for="updateLastName">Last Name:</label>
+        <input type="text" id="updateLastName" name="lastName" required><br>
+        <label for="updateDateOfBirth">Date of Birth:</label>
+        <input type="date" id="updateDateOfBirth" name="dateOfBirth" required><br>
+        <input type="submit" value="Update Student">
+    </form>
+
+    <!-- Form for deleting a student -->
+    <h2>Delete Student</h2>
+    <form action="student" method="get">
+            <input type="hidden" name="action" value="delete"> 
+        <label for="deleteStudentId">Student ID:</label>
+        <input type="number" id="deleteStudentId" name="studentId" required><br>
+        <input type="submit" value="Delete Student">
+    </form>
+
+    <!-- Success and error messages -->
+    <div id="successMessage"></div>
+    <div id="errorMessage"></div>
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const studentForm = document.getElementById("studentForm");
-        const saveBtn = document.getElementById("saveBtn");
-        const updateBtn = document.getElementById("updateBtn");
-        const deleteBtn = document.getElementById("deleteBtn");
-        const studentTable = document.getElementById("studentTable");
+    function showSuccessMessage(message) {
+        var successMessage = document.getElementById("successMessage");
+        successMessage.style.display = "block";
+        successMessage.innerHTML = message;
+        setTimeout(function() {
+            successMessage.style.display = "none";
+        }, 3000);
+    }
 
-        studentForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            const formData = new FormData(studentForm);
-            const action = formData.get("action");
-            fetch("/student?action=" + action, {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.text())
-            .then(() => {
-                location.reload();
-            });
-        });
-
-        updateBtn.addEventListener("click", function () {
-            document.getElementById("action").value = "update";
-            studentForm.submit();
-        });
-
-        deleteBtn.addEventListener("click", function () {
-            document.getElementById("action").value = "delete";
-            studentForm.submit();
-        });
-
-        fetch("/student")
-        .then(response => response.json())
-        .then(students => {
-            students.forEach(student => {
-                const tr = document.createElement("tr");
-                tr.innerHTML = `
-                    <td>${student.firstName}</td>
-                    <td>${student.lastName}</td>
-                    <td>${student.dateOfBirth}</td>
-                    <td>
-                        <button type="button" onclick="editStudent('${student.studentId}', '${student.firstName}', '${student.lastName}', '${student.dateOfBirth}')">Edit</button>
-                    </td>
-                `;
-                studentTable.querySelector("tbody").appendChild(tr);
-            });
-        });
-
-        window.editStudent = function (id, firstName, lastName, dateOfBirth) {
-            document.getElementById("studentId").value = id;
-            document.getElementById("firstName").value = firstName;
-            document.getElementById("lastName").value = lastName;
-            document.getElementById("dateOfBirth").value = dateOfBirth;
-            saveBtn.style.display = "none";
-            updateBtn.style.display = "block";
-            deleteBtn.style.display = "block";
-        };
-    });
+    function showErrorMessage(message) {
+        var errorMessage = document.getElementById("errorMessage");
+        errorMessage.style.display = "block";
+        errorMessage.innerHTML = message;
+        setTimeout(function() {
+            errorMessage.style.display = "none";
+        }, 3000);
+    }
 </script>
+
 </body>
 </html>
