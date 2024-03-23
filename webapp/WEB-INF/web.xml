@@ -12,10 +12,11 @@
         <servlet-name>StudentServlet</servlet-name>
         <servlet-class>Servlets.StudentServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>StudentServlet</servlet-name>
-        <url-pattern>/StudentServlet</url-pattern> 
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>SemesterServlet</servlet-name>
+        <servlet-class>Servlets.SemesterServlet</servlet-class>
+    </servlet>
+    
    <error-page>
         <error-code>404</error-code>
         <location>/ErrorHandling</location>
