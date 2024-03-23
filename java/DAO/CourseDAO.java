@@ -7,8 +7,6 @@ import org.hibernate.Transaction;
 import Model.Course;
 import Util.HibernateUtil;
 
-//import java.time.LocalDate;
-
 public class CourseDAO {
 
     public void save(Course course) {
@@ -42,5 +40,16 @@ public class CourseDAO {
             ex.printStackTrace();
             // Handle exception
         }
+    }
+
+    public Course getCourseById(int course_id) {
+        Course course = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            course = session.get(Course.class, course_id);
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+            // Handle exception
+        }
+        return course;
     }
 }
