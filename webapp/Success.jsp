@@ -35,7 +35,7 @@
 <div class="container">
     <h1>Success</h1>
     <p>Your operation was successful.</p>
-    <a href="${pageContext.request.contextPath}/Student.html">Go back to home page</a>
+    <a href="${pageContext.request.contextPath}/hub.jsp">Go back to Management Dashboard page</a>
 </div>
 </body>
 </html>
