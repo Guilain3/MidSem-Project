@@ -7,8 +7,6 @@ import org.hibernate.Transaction;
 import Model.Student;
 import Util.HibernateUtil;
 
-//import java.time.LocalDate;
-
 public class StudentDAO {
 
     public void save(Student student) {
@@ -43,4 +41,16 @@ public class StudentDAO {
             // Handle exception
         }
     }
+
+    public Student getStudentById(int student_id) {
+        Student student = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            student = session.get(Student.class, student_id);
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+            // Handle exception
+        }
+        return student;
+    }
+
 }
